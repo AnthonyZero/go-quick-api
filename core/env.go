@@ -21,28 +21,28 @@ type Environment interface {
 	IsPro() bool
 }
 
-// Env 实现Environment接口
-type Env struct {
+// env 实现Environment接口
+type env struct {
 	value string
 }
 
-func (e *Env) Value() string {
+func (e *env) Value() string {
 	return e.value
 }
 
-func (e *Env) IsDev() bool {
+func (e *env) IsDev() bool {
 	return e.value == "dev"
 }
 
-func (e *Env) IsFat() bool {
+func (e *env) IsFat() bool {
 	return e.value == "fat"
 }
 
-func (e *Env) IsUat() bool {
+func (e *env) IsUat() bool {
 	return e.value == "uat"
 }
 
-func (e *Env) IsPro() bool {
+func (e *env) IsPro() bool {
 	return e.value == "pro"
 }
 
@@ -59,7 +59,7 @@ func init() {
 	envs := []string{"dev", "fat", "uat", "pro"}
 	if !utils.Contain(value, envs) {
 		//如果输入env变量不符合,那么启用默认fat环境
-		active = &Env{value: "fat"}
+		active = &env{value: "fat"}
 		fmt.Println("Warning: '-env' cannot be found, or it is illegal. The default 'fat' will be used.")
 	}
 }
