@@ -1,4 +1,4 @@
-package time_parse
+package utils
 
 import "time"
 
