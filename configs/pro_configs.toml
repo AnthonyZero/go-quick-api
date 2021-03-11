@@ -1,0 +1,5 @@
+[base]
+port = 8080
+appName = 'go-quick-api'
+logPath = '/Users/anthonyzero/logs/go-quick-api'
+
