@@ -18,8 +18,8 @@ type Database struct {
 	Default *gorm.DB
 }
 
-//Init 初始化db
-func Init() error {
+//InitMysql 初始化mysql
+func InitMysql() error {
 	cfg := configs.Get().MySQL
 
 	//默认db配置
