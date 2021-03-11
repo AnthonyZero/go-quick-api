@@ -1,45 +1,20 @@
-package code
+package public
 
-// 错误时返回结构
-type Failure struct {
-	Code    int    `json:"code"`    // 业务码
-	Message string `json:"message"` // 描述信息
-}
+var (
+	OK                  = &CodeNo{Code: 0, Message: "OK"}
+	InternalServerError = &CodeNo{Code: 10001, Message: "Internal server error"}
+	ErrBind             = &CodeNo{Code: 10002, Message: "Error occurred while binding the request body to the struct"}
 
-const (
-	// 服务级错误码
-	ServerError        = 10101
-	TooManyRequests    = 10102
-	ParamBindError     = 10103
-	AuthorizationError = 10104
-	CallHTTPError      = 10105
+	// user errors
+	ErrUserNotFound = &CodeNo{Code: 20102, Message: "The user was not found"}
 
-	// 模块级错误码 - 用户模块
-	IllegalUserName = 20101
-	UserCreateError = 20102
-	UserUpdateError = 20103
-	UserSearchError = 20104
+	// validation failed
+	ErrValidation = &CodeNo{Code: 20001, Message: "Validation failed."}
+	ErrDatabase   = &CodeNo{Code: 20002, Message: "Database error."}
+	ErrToken      = &CodeNo{Code: 20003, Message: "Error occurred while signing the JSON web token."}
 
-	// 模块级错误吗 - 资讯模块
-	NewsCreateError = 20201
+	// user errors
+	ErrEncrypt           = &CodeNo{Code: 20101, Message: "Error occurred while encrypting the user password."}
+	ErrTokenInvalid      = &CodeNo{Code: 20103, Message: "The token was invalid."}
+	ErrPasswordIncorrect = &CodeNo{Code: 20104, Message: "The password was incorrect."}
 )
-
-var codeText = map[int]string{
-	ServerError:        "Internal Server Error",
-	TooManyRequests:    "Too Many Requests",
-	ParamBindError:     "参数信息有误",
-	AuthorizationError: "签名信息有误",
-	CallHTTPError:      "调用第三方 HTTP 接口失败",
-
-	IllegalUserName: "非法用户名",
-	UserCreateError: "创建用户失败",
-	UserUpdateError: "更新用户失败",
-	UserSearchError: "查询用户失败",
-
-	NewsCreateError: "创建资讯失败",
-}
-
-//Text 返回code对应的信息
-func Text(code int) string {
-	return codeText[code]
-}
