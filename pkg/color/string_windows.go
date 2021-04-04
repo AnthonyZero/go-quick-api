@@ -25,11 +25,6 @@ func Red(msg string) string {
 	return fmt.Sprintf("%s", msg)
 }
 
-// Redf ...
-func Redf(msg string, arg interface{}) string {
-	return fmt.Sprintf("%s %+v\n", msg, arg)
-}
-
 // Blue ...
 func Blue(msg string) string {
 	return fmt.Sprintf("%s", msg)
@@ -38,9 +33,4 @@ func Blue(msg string) string {
 // Green ...
 func Green(msg string) string {
 	return fmt.Sprintf("%s", msg)
-}
-
-// Greenf ...
-func Greenf(msg string, arg interface{}) string {
-	return fmt.Sprintf("%s %+v\n", msg, arg)
 }
