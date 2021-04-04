@@ -45,10 +45,16 @@ func main() {
 	logger.InitZapLogger(configs.Get().Base.LogPath, logger.ToLevel("info"))
 
 	//初始化db
-	db.InitMysql()
+	if err := db.InitMysql(); err != nil {
+		log.Println(color.Red(fmt.Sprintf("mysql init error: %s", err)))
+		os.Exit(1)
+	}
 
 	//初始化redis
-	cache.InitRedis()
+	if err := cache.InitRedis(); err != nil {
+		log.Println(color.Red(fmt.Sprintf("redis init error: %s", err)))
+		os.Exit(1)
+	}
 
 	// 初始化 HTTP 服务
 	gin.SetMode(gin.DebugMode)
