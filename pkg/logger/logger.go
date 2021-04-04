@@ -22,12 +22,13 @@ func InitZapLogger(logdir string, zapLevel zapcore.Level) {
 	defaultLevel = zapLevel
 	// 设置一些基本日志格式
 	encoder := zapcore.NewJSONEncoder(zapcore.EncoderConfig{
-		MessageKey:  "msg",
-		LevelKey:    "level",
-		NameKey:     "logger",
-		EncodeLevel: zapcore.CapitalLevelEncoder,
-		TimeKey:     "timestamp",
-		FunctionKey: "function",
+		MessageKey:    "msg",
+		LevelKey:      "level",
+		NameKey:       "logger",
+		EncodeLevel:   zapcore.CapitalLevelEncoder,
+		TimeKey:       "timestamp",
+		FunctionKey:   "function",
+		StacktraceKey: "stack",
 		EncodeTime: func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
 			enc.AppendString(t.Format("2006-01-02 15:04:05"))
 		},

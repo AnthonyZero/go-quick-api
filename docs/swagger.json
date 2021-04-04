@@ -1,0 +1,114 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/index/user_create": {
+            "post": {
+                "description": "创建用户",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "创建用户",
+                "operationId": "/index/user_create",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/req.CreateUserRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/core.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/index/user_delete": {
+            "get": {
+                "description": "根据用户ID删除",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "删除用户",
+                "operationId": "/index/user_delete",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "用户ID",
+                        "name": "userId",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/core.Result"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "core.Result": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "状态码 0为成功",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "数据",
+                    "type": "object"
+                },
+                "message": {
+                    "description": "错误信息",
+                    "type": "string"
+                },
+                "timestamp": {
+                    "description": "当前时间戳",
+                    "type": "integer"
+                }
+            }
+        },
+        "req.CreateUserRequest": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "description": "密码",
+                    "type": "string",
+                    "example": "232323"
+                },
+                "username": {
+                    "description": "账户",
+                    "type": "string",
+                    "example": "232323"
+                }
+            }
+        }
+    }
+}

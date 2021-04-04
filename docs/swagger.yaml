@@ -1,0 +1,76 @@
+definitions:
+  core.Result:
+    properties:
+      code:
+        description: 状态码 0为成功
+        type: integer
+      data:
+        description: 数据
+        type: object
+      message:
+        description: 错误信息
+        type: string
+      timestamp:
+        description: 当前时间戳
+        type: integer
+    type: object
+  req.CreateUserRequest:
+    properties:
+      password:
+        description: 密码
+        example: "232323"
+        type: string
+      username:
+        description: 账户
+        example: "232323"
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /index/user_create:
+    post:
+      consumes:
+      - application/json
+      description: 创建用户
+      operationId: /index/user_create
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/req.CreateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/core.Result'
+      summary: 创建用户
+      tags:
+      - 用户管理
+  /index/user_delete:
+    get:
+      consumes:
+      - application/json
+      description: 根据用户ID删除
+      operationId: /index/user_delete
+      parameters:
+      - description: 用户ID
+        in: query
+        name: userId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/core.Result'
+      summary: 删除用户
+      tags:
+      - 用户管理
+swagger: "2.0"

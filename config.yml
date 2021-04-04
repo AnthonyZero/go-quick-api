@@ -1,7 +1,7 @@
 #gormt 配置文件(base on gorm tools for mysql database to golang struct)
 base:
     is_dev: false
-out_dir: ./models/domin  # 输出目录
+out_dir: ./models/dao  # 输出目录
 url_tag: json # web url tag(json,db(https://github.com/google/go-querystring))
 language: 中 文  # 语言(English,中 文)
 db_tag: gorm # 数据库标签(gorm,db)

@@ -4,6 +4,7 @@ var (
 	OK                  = &CodeNo{Code: 0, Message: "OK"}
 	InternalServerError = &CodeNo{Code: 10001, Message: "Internal server error"}
 	ErrBind             = &CodeNo{Code: 10002, Message: "Error occurred while binding the request body to the struct"}
+	ErrParameter        = &CodeNo{Code: 10003, Message: "request parameter error"}
 
 	// user errors
 	ErrUserNotFound = &CodeNo{Code: 20102, Message: "The user was not found"}

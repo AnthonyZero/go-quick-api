@@ -10,10 +10,10 @@ import (
 
 //Result 统一返回类型
 type Result struct {
-	Code      int         `json:"code"`
-	Message   string      `json:"message"`
-	Data      interface{} `json:"data"`
-	Timestamp int64       `json:"timestamp"`
+	Code      int         `json:"code"`      //状态码 0为成功
+	Message   string      `json:"message"`   //错误信息
+	Data      interface{} `json:"data"`      //数据
+	Timestamp int64       `json:"timestamp"` //当前时间戳
 }
 
 //Success 返回统一的函数
